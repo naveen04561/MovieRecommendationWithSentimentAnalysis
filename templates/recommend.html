@@ -1,0 +1,46 @@
+{% extends 'home.html' %}
+
+
+{% block content %}
+
+{% if t=='s' %}
+<div class="movie" style="border-color: #181818;width: 60%;color: #A8A8A8;">
+  <center>
+    <h2>Sorry! This movie is not in our database.</h3>
+      <h2>Please check if you spelled it correct.</h3>
+        <h3>Or try with another movie.</h3>
+  </center>
+</div>
+
+{% else %}
+<div class="movie" style="color: #E8E8E8;">
+  <center>
+    <h4>Movies similar to "{{movie}}"</h4>
+  </center>
+</div>
+
+<div class="list-recommend" style="margin-top: 30px;margin-bottom: 50px;text-align: center;">
+  <ul class="list-group list-group-flush"
+    style="margin-left: auto;margin-right: auto;text-align: center;width: 40%;color: #E8E8E8;">
+    {% for m in r %}
+    <li class="list-group-item" style="background-color:#e5091485;"><strong>{{m|title}}</strong></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+<div class="container">
+  <form action="{{ url_for('review')}}">
+    <div class="form-group">
+      <!-- <label for="exampleFormControlTextarea1">Example textarea</label> -->
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="review"
+        placeholder="Enter your Review"></textarea>
+    </div>
+    <div class="form-group" style="text-align: center;">
+      <button type="submit" class="btn btn-primary btn-block"
+        style="background-color: #e50914;text-align: center;border-color: #e50914;">Enter</button><br><br>
+    </div>
+  </form>
+</div>
+
+
+{% endblock %}
